@@ -17,4 +17,9 @@ public class ImgFoodService implements IImgFoodService {
     public List<ImgUrlFood> listImgFood(Integer id) {
         return imgFoodRepository.listImgFood(id);
     }
+
+    @Override
+    public void saveImgFood(ImgUrlFood imgUrlFood) {
+        imgFoodRepository.createImgFood(imgUrlFood.getUrl(), imgUrlFood.getFood().getId());
+    }
 }

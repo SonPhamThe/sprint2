@@ -1,4 +1,9 @@
 package com.example.demo.repository.user;
 
-public interface IUserTypeRepository {
+import com.example.demo.model.user.UserType;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface IUserTypeRepository extends JpaRepository<UserType, Integer> {
 }

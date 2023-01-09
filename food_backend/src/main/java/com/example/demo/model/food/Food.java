@@ -20,6 +20,8 @@ public class Food {
 
     private String description;
 
+    private String avatarFood;
+
     @ManyToOne
     @JoinColumn(name = "category_id", referencedColumnName = "id")
     @JsonManagedReference
@@ -50,11 +52,12 @@ public class Food {
     public Food() {
     }
 
-    public Food(int id, String name, double price, String description, Category category, Set<ImgUrlFood> imgUrlFoods, Set<User> users, Set<Payment> payments) {
+    public Food(int id, String name, double price, String description, String avatarFood, Category category, Set<ImgUrlFood> imgUrlFoods, Set<User> users, Set<Payment> payments) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.description = description;
+        this.avatarFood = avatarFood;
         this.category = category;
         this.imgUrlFoods = imgUrlFoods;
         this.users = users;
@@ -91,6 +94,14 @@ public class Food {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getAvatarFood() {
+        return avatarFood;
+    }
+
+    public void setAvatarFood(String avatarFood) {
+        this.avatarFood = avatarFood;
     }
 
     public Category getCategory() {

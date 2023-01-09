@@ -18,4 +18,14 @@ public class FoodService implements IFoodService {
     public List<Food> showAllFood(String name) {
         return foodRepository.showAllFood(name);
     }
+
+    @Override
+    public void saveFood(Food food) {
+        foodRepository.save(food);
+    }
+
+    @Override
+    public Food getFood(Integer id) {
+        return foodRepository.findById(id).orElse(null);
+    }
 }

@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface IImgFoodService {
     List<ImgUrlFood> listImgFood(Integer id);
+
+    void saveImgFood(ImgUrlFood imgUrlFood);
 }

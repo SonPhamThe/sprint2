@@ -6,4 +6,8 @@ import java.util.List;
 
 public interface IFoodService {
     List<Food> showAllFood(String name);
+
+    void saveFood(Food food);
+
+    Food getFood(Integer id);
 }
