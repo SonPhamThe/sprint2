@@ -2,6 +2,7 @@ package com.example.demo.model.user;
 
 import com.example.demo.model.account.Account;
 import com.example.demo.model.food.Food;
+import com.example.demo.model.order.OrderFood;
 import com.example.demo.model.payment.Payment;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -10,7 +11,6 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity
 public class User {
 
     @Id
@@ -24,46 +24,38 @@ public class User {
     private String email;
 
     private String phone;
-
     private Double pointDedication;
 
     private String birthDay;
 
     private String idCard;
-
-    private String avatar;
-
-    private String address;
-
     @Column(columnDefinition = "boolean default true")
     private Boolean deleteStatus;
 
+    public Boolean getDeleteStatus() {
+        return deleteStatus;
+    }
+
+    public void setDeleteStatus(Boolean deleteStatus) {
+        this.deleteStatus = deleteStatus;
+    }
+
     @ManyToOne
     @JoinColumn(name = "user_type_id", referencedColumnName = "id")
-    @JsonManagedReference
     private UserType userType;
 
+    @JsonBackReference
+    @OneToMany(mappedBy = "user")
+    private Set<OrderFood> orderFoods;
     @OneToOne
     @JoinColumn(name = "account_id", referencedColumnName = "id")
     @JsonBackReference
     private Account account;
 
-    @OneToOne(mappedBy = "user")
-    @JsonBackReference
-    private Account account1;
-
-    @JsonBackReference
-    @ManyToMany(mappedBy = "users")
-    Set<Food> foods = new HashSet<>();
-
-    @OneToOne(mappedBy = "user")
-    @JsonBackReference
-    private Payment payment;
-
     public User() {
     }
 
-    public User(Integer id, String firstName, String lastName, String email, String phone, Double pointDedication, String birthDay, String idCard, String avatar, String address, Boolean deleteStatus, UserType userType, Account account, Account account1, Set<Food> foods, Payment payment) {
+    public User(Integer id, String firstName, String lastName, String email, String phone, Double pointDedication, String birthDay, String idCard, Boolean deleteStatus, UserType userType, Set<OrderFood> orderFoods, Account account) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -72,14 +64,10 @@ public class User {
         this.pointDedication = pointDedication;
         this.birthDay = birthDay;
         this.idCard = idCard;
-        this.avatar = avatar;
-        this.address = address;
         this.deleteStatus = deleteStatus;
         this.userType = userType;
+        this.orderFoods = orderFoods;
         this.account = account;
-        this.account1 = account1;
-        this.foods = foods;
-        this.payment = payment;
     }
 
     public Integer getId() {
@@ -146,30 +134,6 @@ public class User {
         this.idCard = idCard;
     }
 
-    public String getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public Boolean getDeleteStatus() {
-        return deleteStatus;
-    }
-
-    public void setDeleteStatus(Boolean deleteStatus) {
-        this.deleteStatus = deleteStatus;
-    }
-
     public UserType getUserType() {
         return userType;
     }
@@ -178,35 +142,19 @@ public class User {
         this.userType = userType;
     }
 
+    public Set<OrderFood> getOrderFoods() {
+        return orderFoods;
+    }
+
+    public void setOrderFoods(Set<OrderFood> orderFoods) {
+        this.orderFoods = orderFoods;
+    }
+
     public Account getAccount() {
         return account;
     }
 
     public void setAccount(Account account) {
         this.account = account;
-    }
-
-    public Account getAccount1() {
-        return account1;
-    }
-
-    public void setAccount1(Account account1) {
-        this.account1 = account1;
-    }
-
-    public Set<Food> getFoods() {
-        return foods;
-    }
-
-    public void setFoods(Set<Food> foods) {
-        this.foods = foods;
-    }
-
-    public Payment getPayment() {
-        return payment;
-    }
-
-    public void setPayment(Payment payment) {
-        this.payment = payment;
     }
 }

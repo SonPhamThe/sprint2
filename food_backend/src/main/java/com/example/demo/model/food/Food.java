@@ -1,5 +1,6 @@
 package com.example.demo.model.food;
 
+import com.example.demo.model.order.OrderFood;
 import com.example.demo.model.payment.Payment;
 import com.example.demo.model.user.User;
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -41,18 +42,13 @@ public class Food {
     private Set<User> users = new HashSet<>();
 
     @JsonBackReference
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "payment_food",
-            joinColumns = @JoinColumn(name = "food_id"),
-            inverseJoinColumns = @JoinColumn(name = "payment_id")
-    )
-    private Set<Payment> payments = new HashSet<>();
+    @OneToMany(mappedBy = "food")
+    private Set<OrderFood> orderFoods;
 
     public Food() {
     }
 
-    public Food(int id, String name, double price, String description, String avatarFood, Category category, Set<ImgUrlFood> imgUrlFoods, Set<User> users, Set<Payment> payments) {
+    public Food(int id, String name, double price, String description, String avatarFood, Category category, Set<ImgUrlFood> imgUrlFoods, Set<User> users, Set<OrderFood> orderFoods) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -61,7 +57,7 @@ public class Food {
         this.category = category;
         this.imgUrlFoods = imgUrlFoods;
         this.users = users;
-        this.payments = payments;
+        this.orderFoods = orderFoods;
     }
 
     public int getId() {
@@ -128,11 +124,11 @@ public class Food {
         this.users = users;
     }
 
-    public Set<Payment> getPayments() {
-        return payments;
+    public Set<OrderFood> getOrderFoods() {
+        return orderFoods;
     }
 
-    public void setPayments(Set<Payment> payments) {
-        this.payments = payments;
+    public void setOrderFoods(Set<OrderFood> orderFoods) {
+        this.orderFoods = orderFoods;
     }
 }

@@ -1,6 +1,7 @@
 package com.example.demo.model.payment;
 
 import com.example.demo.model.food.Food;
+import com.example.demo.model.order.OrderFood;
 import com.example.demo.model.user.User;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -27,26 +28,21 @@ public class Payment {
     @Column(columnDefinition = "boolean default true")
     private Boolean deleteStatus;
 
-    @JsonBackReference
-    @ManyToMany(mappedBy = "payments")
-    Set<Food> foods = new HashSet<>();
-
     @OneToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @JoinColumn(name = "order_id", referencedColumnName = "id")
     @JsonManagedReference
-    private User user;
+    private OrderFood orderFood;
 
     public Payment() {
     }
 
-    public Payment(Integer id, String shippingDescription, Boolean paymentStatus, int quantity, Boolean deleteStatus, Set<Food> foods, User user) {
+    public Payment(Integer id, String shippingDescription, Boolean paymentStatus, int quantity, Boolean deleteStatus, OrderFood orderFood) {
         this.id = id;
         this.shippingDescription = shippingDescription;
         this.paymentStatus = paymentStatus;
         this.quantity = quantity;
         this.deleteStatus = deleteStatus;
-        this.foods = foods;
-        this.user = user;
+        this.orderFood = orderFood;
     }
 
     public Integer getId() {
@@ -89,19 +85,11 @@ public class Payment {
         this.deleteStatus = deleteStatus;
     }
 
-    public Set<Food> getFoods() {
-        return foods;
+    public OrderFood getOrderFood() {
+        return orderFood;
     }
 
-    public void setFoods(Set<Food> foods) {
-        this.foods = foods;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
+    public void setOrderFood(OrderFood orderFood) {
+        this.orderFood = orderFood;
     }
 }

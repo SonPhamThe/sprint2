@@ -29,6 +29,13 @@ public class PasswordResetToken {
         this.account = account;
     }
 
+    public PasswordResetToken(String token, String expiryDate, Boolean status, Account account) {
+        this.token = token;
+        this.expiryDate = expiryDate;
+        this.status = status;
+        this.account = account;
+    }
+
     public Integer getId() {
         return id;
     }
