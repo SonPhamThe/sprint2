@@ -1,19 +1,16 @@
-import { Food } from "../food/food";
-import { Payment } from "../payment/paymen";
+import { Account } from "../account/account";
 import { UserType } from "./user_type";
 
 export interface User {
-  id?: number;
-  first_name?: string;
-  last_name?: string;
+  id?: number
+  firstName?: string;
+  lastName?: string;
   email?: string;
   phone?: string;
   pointDedication?: number;
   birthDay?: string;
-  id_card?: string;
-  avatar?: string;
-  address?: string;
-  food?: Food;
-  payment?: Payment
-  user_type?: UserType
+  idCard?: string;
+  deleteStatus?: boolean;
+  userType?: UserType;
+  account?: Account;
 }

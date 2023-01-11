@@ -3,7 +3,7 @@ package com.example.demo.controller.security;
 import com.example.demo.dto.security.JwtRespone;
 import com.example.demo.dto.security.MessageRespone;
 import com.example.demo.dto.security.SignInForm;
-import com.example.demo.repository.model.account.Account;
+import com.example.demo.model.account.Account;
 import com.example.demo.security.jwt.JwtProvider;
 import com.example.demo.security.user_detail.MyUserDetail;
 import com.example.demo.service.account.IAccountService;

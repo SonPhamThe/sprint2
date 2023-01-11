@@ -40,9 +40,13 @@
             </li>
           </ul>
           <div class="user_option">
-            <a href="" routerLink="/login">
-              <i class="fa fa-user" aria-hidden="true" style="font-size: 28px; color: white !important;"></i>
-            </a>
+            <div class="btn-group">
+              <button routerLink="/login" type="button" class="btn btn-sm dropdown-toggle" data-toggle="dropdown"  ><i class="fa fa-user" aria-hidden="true" style="font-size: 28px; color: white !important;"></i></button>
+              <div class="dropdown-menu">     
+                <button class="dropdown-item" type="button">Đăng nhập</button>
+                <button class="dropdown-item" type="button">Đăng xuất</button>
+              </div>
+            </div>
             <a class="cart_link" routerLink="/cart">
               <svg
                 version="1.1"

@@ -1,6 +1,6 @@
 package com.example.demo.repository.order;
 
-import com.example.demo.repository.model.order.Orders;
+import com.example.demo.model.order.Orders;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
