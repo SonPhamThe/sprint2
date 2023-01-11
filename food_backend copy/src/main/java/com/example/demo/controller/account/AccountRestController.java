@@ -1,7 +1,6 @@
 package com.example.demo.controller.account;
 
 import com.example.demo.service.account.IAccountService;
-import com.example.demo.service.account.impl.PasswordResetTokenService;
 import com.example.demo.service.user.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -15,9 +14,6 @@ public class AccountRestController {
 
     @Autowired
     private IAccountService accountService;
-
-    @Autowired
-    private PasswordResetTokenService passwordResetTokenUtil;
 
     @Autowired
     private IUserService userService;

@@ -1,8 +1,7 @@
 package com.example.demo.controller.user;
 
-import com.example.demo.model.food.Category;
-import com.example.demo.model.user.User;
-import com.example.demo.model.user.UserType;
+import com.example.demo.repository.model.user.User;
+import com.example.demo.repository.model.user.UserType;
 import com.example.demo.service.user.IUserService;
 import com.example.demo.service.user.IUserTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,12 +12,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.jws.soap.SOAPBinding;
 import java.util.List;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/api/v1/users")
+@RequestMapping("/api/users")
 public class UserRestController {
     @Autowired
     private IUserService userService;

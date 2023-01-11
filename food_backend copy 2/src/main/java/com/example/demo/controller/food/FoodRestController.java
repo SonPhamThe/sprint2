@@ -1,11 +1,10 @@
 package com.example.demo.controller.food;
 
 import com.example.demo.dto.food.FoodDto;
-import com.example.demo.model.food.Category;
-import com.example.demo.model.food.Food;
+import com.example.demo.repository.model.food.Category;
+import com.example.demo.repository.model.food.Food;
 import com.example.demo.service.food.ICategoryService;
 import com.example.demo.service.food.IFoodService;
-import com.example.demo.service.food.IImgFoodService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,14 +13,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.List;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/api/v1/foods")
+@RequestMapping("/api/foods")
 public class FoodRestController {
     @Autowired
     private ICategoryService categoryService;

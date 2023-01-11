@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/api/v1/payments")
+@RequestMapping("/api/payments")
 public class PaymentRestController {
     @Autowired
     private IPaymentService paymentService;

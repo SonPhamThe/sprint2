@@ -1,6 +1,6 @@
 package com.example.demo.service.food.impl;
 
-import com.example.demo.model.food.Food;
+import com.example.demo.repository.model.food.Food;
 import com.example.demo.repository.food.IFoodRepository;
 import com.example.demo.service.food.IFoodService;
 import org.springframework.beans.factory.annotation.Autowired;
