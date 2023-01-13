@@ -5,7 +5,25 @@
     <div class="heading_container heading_center">
       <h2>BiSon Restaurant Menu</h2>
     </div>
-
+  </div> <div class="col-sm-4">
+    <div class="faq-search-input">
+      <object
+        class="material-icons md-24"
+        data="assets/icons/search.svg"
+        width="20"
+        height="20"
+      ></object>
+      <input
+        [(ngModel)]="name"
+        (ngModelChange)="searchAll()"
+        type="text"
+        placeholder="Nhập tiêu đề hướng dẫn"
+        style="margin-right: 10px"
+        aria-label="Search"
+        class="ng-pristine ng-untouched ng-valid ng-empty"
+      />
+    </div>
+  </div>    
     <ul class="filters_menu">
       <li class="active" data-filter="*">Tất cả</li>
       <li *ngFor="let x of category; index as i">{{x.name}}</li>
@@ -91,7 +109,6 @@
     <div class="btn-box">
       <a href=""> Xem thêm</a>
     </div>
-  </div>
 </section>
 
 <!-- end food section -->
