@@ -1,4 +1,4 @@
-package com.example.demo.repository.model.food;
+package com.example.demo.model.user;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -6,24 +6,23 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-public class Category {
+public class UserType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
 
-
     @JsonBackReference
-    @OneToMany(mappedBy = "category")
-    private Set<Food> foods;
+    @OneToMany(mappedBy ="userType")
+    private Set<User> users;
 
-    public Category() {
+    public UserType() {
     }
 
-    public Category(Integer id, String name, Set<Food> foods) {
+    public UserType(Integer id, String name, Set<User> users) {
         this.id = id;
         this.name = name;
-        this.foods = foods;
+        this.users = users;
     }
 
     public Integer getId() {
@@ -42,11 +41,11 @@ public class Category {
         this.name = name;
     }
 
-    public Set<Food> getFoods() {
-        return foods;
+    public Set<User> getUsers() {
+        return users;
     }
 
-    public void setFoods(Set<Food> foods) {
-        this.foods = foods;
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
 }

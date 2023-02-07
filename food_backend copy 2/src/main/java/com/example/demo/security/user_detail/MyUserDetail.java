@@ -1,7 +1,7 @@
 package com.example.demo.security.user_detail;
 
-import com.example.demo.repository.model.account.Account;
-import com.example.demo.repository.model.account.AccountRole;
+import com.example.demo.model.account.Account;
+import com.example.demo.model.account.AccountRole;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

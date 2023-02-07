@@ -1,8 +1,9 @@
-package com.example.demo.repository.model.user;
+package com.example.demo.model.user;
 
-import com.example.demo.repository.model.account.Account;
-import com.example.demo.repository.model.order.Orders;
+import com.example.demo.model.account.Account;
+import com.example.demo.model.order.Orders;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -31,6 +32,7 @@ public class User {
 
     @ManyToOne
     @JoinColumn(name = "user_type_id", referencedColumnName = "id")
+    @JsonManagedReference
     private UserType userType;
 
     @JsonBackReference

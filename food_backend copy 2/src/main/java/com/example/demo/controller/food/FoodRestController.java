@@ -1,8 +1,8 @@
 package com.example.demo.controller.food;
 
 import com.example.demo.dto.food.FoodDto;
-import com.example.demo.repository.model.food.Category;
-import com.example.demo.repository.model.food.Food;
+import com.example.demo.model.food.Category;
+import com.example.demo.model.food.Food;
 import com.example.demo.service.food.ICategoryService;
 import com.example.demo.service.food.IFoodService;
 import org.springframework.beans.BeanUtils;

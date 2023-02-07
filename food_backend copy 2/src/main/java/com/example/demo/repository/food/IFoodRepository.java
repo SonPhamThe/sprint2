@@ -1,6 +1,6 @@
 package com.example.demo.repository.food;
 
-import com.example.demo.repository.model.food.Food;
+import com.example.demo.model.food.Food;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

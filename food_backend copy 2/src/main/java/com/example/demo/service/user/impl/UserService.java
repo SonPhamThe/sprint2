@@ -1,6 +1,6 @@
 package com.example.demo.service.user.impl;
 
-import com.example.demo.repository.model.user.User;
+import com.example.demo.model.user.User;
 import com.example.demo.repository.user.IUserRepository;
 import com.example.demo.service.user.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,5 +15,10 @@ public class UserService implements IUserService {
     @Override
     public List<User> listUser() {
         return userRepository.findAll();
+    }
+
+    @Override
+    public User getUserById(int idUser) {
+        return userRepository.findById(idUser).orElse(new User());
     }
 }

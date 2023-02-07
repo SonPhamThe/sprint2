@@ -1,7 +1,7 @@
 package com.example.demo.dto.security;
 
-import com.example.demo.repository.model.account.Account;
-import com.example.demo.repository.model.user.User;
+import com.example.demo.model.account.Account;
+import com.example.demo.model.user.User;
 import org.springframework.security.core.GrantedAuthority;
 
 import java.util.Collection;

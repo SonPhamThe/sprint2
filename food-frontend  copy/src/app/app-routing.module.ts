@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: "about", component: AboutComponent },
   { path: "booking", component: BookingComponent, canActivate: [LoginGuard] },
   { path: "login", component: LoginComponent },
-  { path: "cart", component: CartComponent, canActivate: [AdminGuard] },
+  { path: "cart", component: CartComponent },
   { path: "login", component: LoginComponent },
 ];
 

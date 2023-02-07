@@ -1,6 +1,6 @@
-package com.example.demo.repository.model.payment;
+package com.example.demo.model.payment;
 
-import com.example.demo.repository.model.order.Orders;
+import com.example.demo.model.order.Orders;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;

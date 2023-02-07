@@ -1,6 +1,6 @@
 package com.example.demo.service.food;
 
-import com.example.demo.repository.model.food.Food;
+import com.example.demo.model.food.Food;
 
 import java.util.List;
 

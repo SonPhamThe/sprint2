@@ -1,6 +1,6 @@
-package com.example.demo.repository.model.account;
+package com.example.demo.model.account;
 
-import com.example.demo.repository.model.user.User;
+import com.example.demo.model.user.User;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 

@@ -1,43 +1,61 @@
-<div class="wrapper">
-  <h1>Giỏ hàng của tôi</h1>
-  <div class="project">
-    <div class="shop">
-      <div class="box">
-        <img src="../../assets/images/noodle1.jpeg">
-        <div class="content">
-          <h3>Mỳ xào hải sản</h3>
-          <h4>Giá: 410.000 VND</h4>
-          <p class="unit">Quantity: <input name="" value="2"></p>
-          <p class="btn-area"><i aria-hidden="true" class="fa fa-trash"></i> <span class="btn2">Remove</span></p>
+<div class="page-wrapper">
+  <section class="cart">
+    <h1 class="cart__title">
+      Giỏ hàng của tôi
+    </h1>
+    <div class="cart__body">
+      <div class="cart__items">
+        <div class="item" *ngFor="let item of cartItems; index as i">
+          <div class="item__right">
+            <div class="item-inner">
+              <div class="item-inner__img">
+                <img [src]="item.foodImageLink" alt="">
+              </div>
+              <div class="item-inner__details">
+                <p class="item-inner__name">{{ item.foodName }}</p>
+                <div class="item-inner__delete" (click)="deleteItem(i)">Xóa</div>
+              </div>
+            </div>
+          </div>
+          <div class="item__left">
+            <div class="item-control">
+              <div class="item-control__incrementer">
+                <a (click)="removeItem(i)">
+                  <img src="../../assets/images/remove_circle.png" width="34" height="34" alt="">
+                </a>
+                <p class="item-control__quantity">{{ item.foodQuantity }}</p>
+                <a (click)="addItem(i)">
+                  <img src="../../assets/images;l/add_circle.png" width="34" height="34" alt="">
+                </a>
+              </div>
+              <p class="item-control__price">{{ item.foodPrice * item.foodQuantity }} &#8363;</p>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="box">
-        <img src="../../assets/images/drink2.png">
-        <div class="content">
-          <h3>B52</h3>
-          <h4>Price: $40</h4>
-          <p class="unit">Quantity: <input name="" value="1"></p>
-          <p class="btn-area"><i aria-hidden="true" class="fa fa-trash"></i> <span class="btn2">Remove</span></p>
-        </div>
-      </div>
-      <div class="box">
-        <img src="../../assets/images/noodle3.png">
-        <div class="content">
-          <h3>Samsung Mobile</h3>
-          <h4>Price: $250</h4>
-          <p class="unit">Quantity: <input name="" value="0"></p>
-          <p class="btn-area"><i aria-hidden="true" class="fa fa-trash"></i> <span class="btn2">Remove</span></p>
+      <div class="cart__payment">
+        <div class="payment">
+          <h4 class="payment__title">{{ cartItems.length }} Món</h4>
+          <hr>
+          <div class="payment__details">
+            <div>Tổng đơn hàng</div>
+            <div>{{ calTotalPrice() }} &#8363;</div>
+          </div>
+          <div class="payment__details">
+            <div>Phí giao hàng</div>
+            <div>{{ deliverPrice }} &#8363;</div>
+          </div>
+          <div class="payment__details">
+            <div>Tổng thanh toán</div>
+            <div>{{ calTotalPrice() + deliverPrice }} &#8363; </div>
+          </div>
+          <hr>
+          <button class="payment__btn">
+            <p>Thanh toán</p>
+            <p>{{ calTotalPrice() + deliverPrice }} &#8363;</p>
+          </button>
         </div>
       </div>
     </div>
-    <div class="right-bar">
-      <p><span>Subtotal</span> <span>$120</span></p>
-      <hr>
-      <p><span>Tax (5%)</span> <span>$6</span></p>
-      <hr>
-      <p><span>Shipping</span> <span>$15</span></p>
-      <hr>
-      <p><span>Total</span> <span>$141</span></p><a href="#"><i class="fa fa-shopping-cart"></i>Checkout</a>
-    </div>
-  </div>
+  </section>
 </div>

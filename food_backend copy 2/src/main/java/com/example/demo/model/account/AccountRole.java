@@ -1,4 +1,4 @@
-package com.example.demo.repository.model.account;
+package com.example.demo.model.account;
 
 import javax.persistence.*;
 

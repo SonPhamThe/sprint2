@@ -1,28 +1,28 @@
-package com.example.demo.repository.model.food;
+package com.example.demo.model.guide;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 
 @Entity
-public class ImgUrlFood {
+public class ImgUrlGuide {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String url;
 
     @ManyToOne
-    @JoinColumn(name = "food_id", referencedColumnName = "id")
+    @JoinColumn(name = "guide_id",referencedColumnName = "id")
     @JsonManagedReference
-    private Food food;
+    private Guide guide;
 
-    public ImgUrlFood() {
+    public ImgUrlGuide() {
     }
 
-    public ImgUrlFood(Integer id, String url, Food food) {
+    public ImgUrlGuide(Integer id, String url, Guide guide) {
         this.id = id;
         this.url = url;
-        this.food = food;
+        this.guide = guide;
     }
 
     public Integer getId() {
@@ -41,11 +41,11 @@ public class ImgUrlFood {
         this.url = url;
     }
 
-    public Food getFood() {
-        return food;
+    public Guide getGuide() {
+        return guide;
     }
 
-    public void setFood(Food food) {
-        this.food = food;
+    public void setGuide(Guide guide) {
+        this.guide = guide;
     }
 }

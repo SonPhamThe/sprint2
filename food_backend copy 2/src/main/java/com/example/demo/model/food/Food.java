@@ -1,6 +1,7 @@
-package com.example.demo.repository.model.food;
+package com.example.demo.model.food;
 
-import com.example.demo.repository.model.order.Orders;
+import com.example.demo.model.order.OrderDetail;
+import com.example.demo.model.order.Orders;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -30,22 +31,18 @@ public class Food {
     private Set<ImgUrlFood> imgUrlFoods;
 
     @JsonBackReference
-    @ManyToMany
-    @JoinTable(name = "order_food", joinColumns = @JoinColumn(name = "order_id"), inverseJoinColumns = @JoinColumn(name = "food_id"))
-    private Set<Orders> orders;
+    @OneToMany(mappedBy = "food")
+    private Set<OrderDetail> orderDetails;
 
     public Food() {
     }
 
-    public Food(int id, String name, double price, String description, String avatarFood, Category category, Set<ImgUrlFood> imgUrlFoods, Set<Orders> orders) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.description = description;
-        this.avatarFood = avatarFood;
-        this.category = category;
-        this.imgUrlFoods = imgUrlFoods;
-        this.orders = orders;
+    public Set<OrderDetail> getOrderDetails() {
+        return orderDetails;
+    }
+
+    public void setOrderDetails(Set<OrderDetail> orderDetails) {
+        this.orderDetails = orderDetails;
     }
 
     public int getId() {
@@ -104,11 +101,5 @@ public class Food {
         this.imgUrlFoods = imgUrlFoods;
     }
 
-    public Set<Orders> getOrders() {
-        return orders;
-    }
 
-    public void setOrders(Set<Orders> orders) {
-        this.orders = orders;
-    }
 }

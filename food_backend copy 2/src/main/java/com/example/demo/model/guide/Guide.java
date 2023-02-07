@@ -1,4 +1,4 @@
-package com.example.demo.repository.model.guide;
+package com.example.demo.model.guide;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
