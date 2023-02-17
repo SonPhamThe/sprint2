@@ -5,6 +5,5 @@ export interface OrderFood {
   id?: number;
   user?: User;
   payment?: Payment;
-  orderDetail?: OrderDetail;
   deleteStatus?: number;
 }

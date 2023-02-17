@@ -1,68 +1,58 @@
 import { Component, OnInit } from '@angular/core';
+import { OrderDetail } from '../model/order/order_detail';
+import { User } from '../model/user/user';
+import { TokenService } from '../service/account/token.service';
+import { FoodServiceService } from '../service/food/food-service.service';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss']
 })
-export class CartComponent implements OnInit {
-
-  cartItems: CartItem[] = [
-    {
-      foodImageLink: 'https://static.kfcvietnam.com.vn/images/items/lg/2-lava-taro.jpg?v=LZKWE4',
-      foodName: '2 Viên Khoai Môn Kim Sa',
-      foodQuantity: 2,
-      foodPrice: 52000
-    },
-    {
-      foodImageLink: 'https://static.kfcvietnam.com.vn/images/items/lg/pumcheese-2thanh.jpg?v=LZKWE4',
-      foodName: '2 Thanh Bí Phô Mai',
-      foodQuantity: 2,
-      foodPrice: 29000
-    },
-    {
-      foodImageLink: 'https://static.kfcvietnam.com.vn/images/items/lg/3-tatsutaage.jpg?v=LZKWE4',
-      foodName: '3 Gà Tatsutaage',
-      foodQuantity: 1,
-      foodPrice: 35000
-    },
-    {
-      foodImageLink: 'https://static.kfcvietnam.com.vn/images/items/lg/4-eggtart.jpg?v=LZKWE4',
-      foodName: '4 Bánh Trứng',
-      foodQuantity: 1,
-      foodPrice: 59000
-    }
-  ];
+export class CartComponent implements OnInit { 
+  cartItems: OrderDetail[] =[];
   deliverPrice: number = 10000;
-  constructor() { }
+  user: User;
+  totalPrice: number = 0;
+  constructor(private _tokenService: TokenService,
+    private _foodService: FoodServiceService) { }
 
   ngOnInit(): void {
+    this.user = JSON.parse(this._tokenService.getUser())
+    this._foodService.getCart(this.user.id).subscribe(data=>{
+      this.cartItems = data;
+      data.forEach(value=>{
+        this.totalPrice += value.quantity * value.food.price;
+      })
+      console.log(this.totalPrice);
+      console.log(this.cartItems);
+    })
   }
 
   calTotalPrice(): number {
     let sum: number = 0;
-    this.cartItems.forEach((item: CartItem) => {
-      sum += item.foodPrice * item.foodQuantity;
-    })
+    // this.cartItems.forEach((item: CartItem) => {
+    //   sum += item.foodPrice * item.foodQuantity;
+    // })
     return sum;
   }
 
   removeItem(i: number): void {
-    this.cartItems.forEach((value: CartItem, index: number) => {
-      if (index == i && value.foodQuantity > 1) {
-        value.foodQuantity--;
-        return;
-      }
-    })
+    // this.cartItems.forEach((value: CartItem, index: number) => {
+    //   if (index == i && value.foodQuantity > 1) {
+    //     value.foodQuantity--;
+    //     return;
+    //   }
+    // })
   }
 
   addItem(i: number): void {
-    this.cartItems.forEach((value: CartItem, index: number) => {
-      if (index == i) {
-        value.foodQuantity++;
-        return;
-      }
-    })
+    // this.cartItems.forEach((value: CartItem, index: number) => {
+    //   if (index == i) {
+    //     value.foodQuantity++;
+    //     return;
+    //   }
+    // })
   }
 
   deleteItem(i: number): void {

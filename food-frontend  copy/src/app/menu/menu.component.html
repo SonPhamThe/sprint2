@@ -11,6 +11,16 @@
       <li *ngFor="let x of category; index as i">{{x.name}}</li>
     </ul>
 
+    <input
+                [(ngModel)]="name"
+                (ngModelChange)="searchAll()"
+                type="text"
+                placeholder="Nhập món ăn cần tìm"
+                style="margin-right: 10px"
+                aria-label="Search"
+                class="ng-pristine ng-untouched ng-valid ng-empty"
+              />
+
     <div class="filters-content">
       <div class="row grid">
         <div class="col-sm-6 col-lg-4 all noodle" *ngFor="let y of food">
@@ -25,8 +35,8 @@
                   {{y.description}}
                 </p>
                 <div class="options">
-                  <h6>{{y.price}} VND</h6>
-                  <a href="">
+                  <h6>{{y.price|number}} VND</h6>
+                  <a (click)="order(y.id)" style="cursor: pointer;">
                     <svg
                       version="1.1"
                       id="Capa_1"

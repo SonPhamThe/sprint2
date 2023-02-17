@@ -9,10 +9,10 @@
           <div class="item__right">
             <div class="item-inner">
               <div class="item-inner__img">
-                <img [src]="item.foodImageLink" alt="">
+                <img [src]="item.food.avatarFood" alt="" style="max-width: 270px; max-height: 170px;">
               </div>
               <div class="item-inner__details">
-                <p class="item-inner__name">{{ item.foodName }}</p>
+                <p class="item-inner__name">{{ item.food.name }}</p>
                 <div class="item-inner__delete" (click)="deleteItem(i)">Xóa</div>
               </div>
             </div>
@@ -23,12 +23,12 @@
                 <a (click)="removeItem(i)">
                   <img src="../../assets/images/remove_circle.png" width="34" height="34" alt="">
                 </a>
-                <p class="item-control__quantity">{{ item.foodQuantity }}</p>
+                <p class="item-control__quantity">{{ item.quantity }}</p>
                 <a (click)="addItem(i)">
-                  <img src="../../assets/images;l/add_circle.png" width="34" height="34" alt="">
+                  <img src="../../assets/images/add_circle.png" width="34" height="34" alt="">
                 </a>
               </div>
-              <p class="item-control__price">{{ item.foodPrice * item.foodQuantity }} &#8363;</p>
+              <p class="item-control__price">{{ item.food.price * item.quantity|number }} &#8363;</p>
             </div>
           </div>
         </div>
@@ -39,20 +39,20 @@
           <hr>
           <div class="payment__details">
             <div>Tổng đơn hàng</div>
-            <div>{{ calTotalPrice() }} &#8363;</div>
+            <div>{{ totalPrice|number}} &#8363;</div>
           </div>
           <div class="payment__details">
             <div>Phí giao hàng</div>
-            <div>{{ deliverPrice }} &#8363;</div>
+            <div>{{ deliverPrice |number}} &#8363;</div>
           </div>
           <div class="payment__details">
             <div>Tổng thanh toán</div>
-            <div>{{ calTotalPrice() + deliverPrice }} &#8363; </div>
+            <div>{{ totalPrice + deliverPrice|number }} &#8363; </div>
           </div>
           <hr>
           <button class="payment__btn">
             <p>Thanh toán</p>
-            <p>{{ calTotalPrice() + deliverPrice }} &#8363;</p>
+            <p>{{ totalPrice + deliverPrice|number }} &#8363;</p>
           </button>
         </div>
       </div>

@@ -4,12 +4,14 @@ import { Observable } from 'rxjs';
 import { Category } from 'src/app/model/food/category';
 import { Food } from 'src/app/model/food/food';
 import { ImgFood } from 'src/app/model/food/img_food';
+import { OrderDetail } from 'src/app/model/order/order_detail';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FoodServiceService {
+  
 
   constructor(private _httpClient: HttpClient) { }
 
@@ -23,5 +25,12 @@ export class FoodServiceService {
 
   findAllCategory(): Observable<Category[]> {
     return this._httpClient.get<Category[]>(environment.api_url_list_category);
+  }
+  order(rfFood):Observable<OrderDetail>{
+  return this._httpClient.post<OrderDetail>("http://localhost:8080/api/orders/orderFood",rfFood)
+  }
+
+  getCart(idUser):Observable<OrderDetail[]>{
+    return this._httpClient.get<OrderDetail[]>("http://localhost:8080/api/orders/cart/" + idUser)
   }
 }

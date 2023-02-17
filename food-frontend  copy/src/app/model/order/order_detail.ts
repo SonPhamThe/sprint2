@@ -1,8 +1,9 @@
+import { Food } from "../food/food";
 import { OrderFood } from "./order_food";
 
 export interface OrderDetail {
   id?: number;
   quantity?: number;
-  productDetail?: ProductDetail;
+  food?: Food,
   orderFood?: OrderFood;
 }
