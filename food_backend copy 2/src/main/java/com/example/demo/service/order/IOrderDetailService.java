@@ -10,4 +10,6 @@ public interface IOrderDetailService {
     List<OrderDetail> getListFoodOrderByUserId(int idUser);
 
     void save(OrderDetail orderDetail);
+
+    void delete(Integer id);
 }

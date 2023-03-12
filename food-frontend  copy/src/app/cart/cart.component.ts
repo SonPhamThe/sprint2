@@ -55,8 +55,10 @@ export class CartComponent implements OnInit {
     // })
   }
 
-  deleteItem(i: number): void {
-    this.cartItems.splice(i, 1);
+  deleteItem(id): void {
+   this._foodService.deleteOrder(id).subscribe(data=>{
+    
+   })
   }
 
 }

@@ -45,7 +45,6 @@ export class MenuComponent implements OnInit {
     
     this._foodService.findAllFood(this.name).subscribe((data) => {
       this.food = data;
-      console.log(this.food);
     });
     this._foodService.findImageFood(this.id).subscribe((data) => {
       this.imageFood = data;

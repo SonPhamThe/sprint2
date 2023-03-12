@@ -1,0 +1,89 @@
+label {
+  position: absolute;
+  width: 98px;
+  height: 18px;
+  left: 0px;
+  top: 0px;
+  font-family: "Noto Sans JP";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 150%;
+  color: #485764;
+  margin-left: 10px;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: white;
+}
+
+.topnav .search-container {
+  float: right;
+}
+
+.topnav input[type="text"] {
+  position: absolute;
+  height: 30px;
+  width: 407px;
+  left: 0%;
+  right: 0%;
+  top: 22px;
+  padding: 6px 8px;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.topnav .search-container button {
+  float: right;
+  padding: 6px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: white;
+  font-size: 17px;
+  border-radius: 3px;
+  cursor: pointer;
+  justify-content: center;
+  text-align: center;
+  border: 1px solid #D6D6D6;
+}
+
+.topnav .search-container button[type="submit"] {
+  background: #4392BB;
+}
+
+.topnav .search-container button:hover {
+  background: white;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav .search-container {
+    float: none;
+  }
+  .topnav a,
+  .topnav input[type="text"],
+  .topnav .search-container button {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  .topnav input[type="text"] {
+    border: 1px solid #d6d6d6;
+    border-radius: 2px;
+  }
+}
+
+ ::placeholder {
+  width: 118px;
+  height: 20px;
+  font-family: "Noto Sans JP";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 150%;
+  letter-spacing: 0.014em;
+  color: #9F9F9F;
+}

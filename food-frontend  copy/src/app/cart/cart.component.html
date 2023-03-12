@@ -1,61 +1,250 @@
-<div class="page-wrapper">
-  <section class="cart">
-    <h1 class="cart__title">
-      Giỏ hàng của tôi
-    </h1>
-    <div class="cart__body">
-      <div class="cart__items">
-        <div class="item" *ngFor="let item of cartItems; index as i">
-          <div class="item__right">
-            <div class="item-inner">
-              <div class="item-inner__img">
-                <img [src]="item.food.avatarFood" alt="" style="max-width: 270px; max-height: 170px;">
-              </div>
-              <div class="item-inner__details">
-                <p class="item-inner__name">{{ item.food.name }}</p>
-                <div class="item-inner__delete" (click)="deleteItem(i)">Xóa</div>
-              </div>
-            </div>
-          </div>
-          <div class="item__left">
-            <div class="item-control">
-              <div class="item-control__incrementer">
-                <a (click)="removeItem(i)">
-                  <img src="../../assets/images/remove_circle.png" width="34" height="34" alt="">
-                </a>
-                <p class="item-control__quantity">{{ item.quantity }}</p>
-                <a (click)="addItem(i)">
-                  <img src="../../assets/images/add_circle.png" width="34" height="34" alt="">
-                </a>
-              </div>
-              <p class="item-control__price">{{ item.food.price * item.quantity|number }} &#8363;</p>
-            </div>
-          </div>
+<div class="topnav">
+  <div class="topnav-title">
+    <label>フリーワード検索</label>
+  </div>
+  <div class="topnav-search">
+    <input type="text" placeholder="コード、名称で検索" />
+    <button class="btn submit" type="submit">新規</button>
+    <button class="btn clear">クリア</button>
+  </div>
+</div>
+
+<div class="data">
+  <div class="data-title">
+    <p>検索結果一覧</p>
+    <button class="btn add">
+      <div class="plus">+</div>
+      <div>新規</div>
+    </button>
+    <p class="note">総計 15 / 15 件</p>
+  </div>
+
+  <div class="title">
+    <div class="title-able">
+      <div class="number">No.</div>
+      <div class="code">商品分類コード</div>
+      <div class="name">名称</div>
+      <div class="functions">操作</div>
+    </div>
+  </div>
+
+  <div class="input-add">
+    <div class="input-add-note">-</div>
+    <input class="input-add-code" />
+    <input class="input-add-name" />
+  </div>
+  
+  <div class="table">
+    <div class="table-infor">
+      <div class="table-infor-content">
+        <div class="table-infor-content-number">
+          <span>1</span>
+        </div>
+        <div class="table-infor-content-code">
+          <span>001</span>
+        </div>
+        <div class="table-infor-content-name">
+          <span>終了予定品</span>
         </div>
       </div>
-      <div class="cart__payment">
-        <div class="payment">
-          <h4 class="payment__title">{{ cartItems.length }} Món</h4>
-          <hr>
-          <div class="payment__details">
-            <div>Tổng đơn hàng</div>
-            <div>{{ totalPrice|number}} &#8363;</div>
-          </div>
-          <div class="payment__details">
-            <div>Phí giao hàng</div>
-            <div>{{ deliverPrice |number}} &#8363;</div>
-          </div>
-          <div class="payment__details">
-            <div>Tổng thanh toán</div>
-            <div>{{ totalPrice + deliverPrice|number }} &#8363; </div>
-          </div>
-          <hr>
-          <button class="payment__btn">
-            <p>Thanh toán</p>
-            <p>{{ totalPrice + deliverPrice|number }} &#8363;</p>
-          </button>
+      <div class="table-note">
+        <div class="table-infor-content-edit">
+          <span><i class="fa-solid fa-pen-to-square"></i></span>
+        </div>
+        <div class="table-infor-content-delete">
+          <span>
+            <i class="fa-solid fa-trash"></i>
+          </span>
         </div>
       </div>
     </div>
-  </section>
+    <div class="table-infor">
+      <div class="table-infor-content">
+        <div class="table-infor-content-number">
+          <span>2</span>
+        </div>
+        <div class="table-infor-content-code">
+          <span>002</span>
+        </div>
+        <div class="table-infor-content-name">
+          <span>受注発注商品</span>
+        </div>
+      </div>
+      <div class="table-note">
+        <div class="table-infor-content-edit">
+          <span><i class="fa-solid fa-pen-to-square"></i></span>
+        </div>
+        <div class="table-infor-content-delete">
+          <span>
+            <i class="fa-solid fa-trash"></i>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="table-infor">
+      <div class="table-infor-content">
+        <div class="table-infor-content-number">
+          <span>3</span>
+        </div>
+        <div class="table-infor-content-code">
+          <span>003</span>
+        </div>
+        <div class="table-infor-content-name">
+          <span>MT在庫商品</span>
+        </div>
+      </div>
+      <div class="table-note">
+        <div class="table-infor-content-edit">
+          <span><i class="fa-solid fa-pen-to-square"></i></span>
+        </div>
+        <div class="table-infor-content-delete">
+          <span>
+            <i class="fa-solid fa-trash"></i>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="table-infor">
+      <div class="table-infor-content">
+        <div class="table-infor-content-number">
+          <span>4</span>
+        </div>
+        <div class="table-infor-content-code">
+          <span>004</span>
+        </div>
+        <div class="table-infor-content-name">
+          <span>メーカー預け在庫商品</span>
+        </div>
+      </div>
+      <div class="table-note">
+        <div class="table-infor-content-edit">
+          <span><i class="fa-solid fa-pen-to-square"></i></span>
+        </div>
+        <div class="table-infor-content-delete">
+          <span>
+            <i class="fa-solid fa-trash"></i>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="table-infor">
+      <div class="table-infor-content">
+        <div class="table-infor-content-number">
+          <span>5</span>
+        </div>
+        <div class="table-infor-content-code">
+          <span>005</span>
+        </div>
+        <div class="table-infor-content-name">
+          <span>メーカー在庫</span>
+        </div>
+      </div>
+      <div class="table-note">
+        <div class="table-infor-content-edit">
+          <span><i class="fa-solid fa-pen-to-square"></i></span>
+        </div>
+        <div class="table-infor-content-delete">
+          <span>
+            <i class="fa-solid fa-trash"></i>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="table-infor">
+      <div class="table-infor-content">
+        <div class="table-infor-content-number">
+          <span>6</span>
+        </div>
+        <div class="table-infor-content-code">
+          <span>006</span>
+        </div>
+        <div class="table-infor-content-name">
+          <span>保管料商品</span>
+        </div>
+      </div>
+      <div class="table-note">
+        <div class="table-infor-content-edit">
+          <span><i class="fa-solid fa-pen-to-square"></i></span>
+        </div>
+        <div class="table-infor-content-delete">
+          <span>
+            <i class="fa-solid fa-trash"></i>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="table-infor">
+      <div class="table-infor-content">
+        <div class="table-infor-content-number">
+          <span>7</span>
+        </div>
+        <div class="table-infor-content-code">
+          <span>007</span>
+        </div>
+        <div class="table-infor-content-name">
+          <span>滞留在庫</span>
+        </div>
+      </div>
+      <div class="table-note">
+        <div class="table-infor-content-edit">
+          <span><i class="fa-solid fa-pen-to-square"></i></span>
+        </div>
+        <div class="table-infor-content-delete">
+          <span>
+            <i class="fa-solid fa-trash"></i>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="table-infor">
+      <div class="table-infor-content">
+        <div class="table-infor-content-number">
+          <span>8</span>
+        </div>
+        <div class="table-infor-content-code">
+          <span>008</span>
+        </div>
+        <div class="table-infor-content-name">
+          <span>メーカー直送</span>
+        </div>
+      </div>
+      <div class="table-note">
+        <div class="table-infor-content-edit">
+          <span><i class="fa-solid fa-pen-to-square"></i></span>
+        </div>
+        <div class="table-infor-content-delete">
+          <span>
+            <i class="fa-solid fa-trash"></i>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="table-infor">
+      <div class="table-infor-content">
+        <div class="table-infor-content-number">
+          <span>9</span>
+        </div>
+        <div class="table-infor-content-code">
+          <span>009</span>
+        </div>
+        <div class="table-infor-content-name">
+          <span>諸掛品</span>
+        </div>
+      </div>
+      <div class="table-note">
+        <div class="table-infor-content-edit">
+          <span><i class="fa-solid fa-pen-to-square"></i></span>
+        </div>
+        <div class="table-infor-content-delete">
+          <span>
+            <i class="fa-solid fa-trash"></i>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="btn see">
+    <div class="load">+</div>
+    <div class="content">更に表示</div>
+  </button>
 </div>

@@ -2,6 +2,7 @@ package com.example.demo.model.account;
 
 import com.example.demo.model.user.User;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 import javax.persistence.*;
@@ -20,8 +21,9 @@ public class Account {
     @OneToOne(mappedBy = "account")
     @JsonBackReference
     private User users;
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "account")
+
     @JsonBackReference
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "account")
     private Set<AccountRole> accountRoles;
     public User getUsers() {
         return users;

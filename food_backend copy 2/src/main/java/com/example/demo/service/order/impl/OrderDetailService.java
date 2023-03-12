@@ -23,4 +23,9 @@ public class OrderDetailService implements IOrderDetailService {
     public void save(OrderDetail orderDetail) {
         orderDetailRepository.save(orderDetail);
     }
+
+    @Override
+    public void delete(Integer id) {
+        orderDetailRepository.deleteById(id);
+    }
 }

@@ -12,6 +12,7 @@ import { environment } from 'src/environments/environment';
 })
 export class FoodServiceService {
   
+  
 
   constructor(private _httpClient: HttpClient) { }
 
@@ -33,4 +34,9 @@ export class FoodServiceService {
   getCart(idUser):Observable<OrderDetail[]>{
     return this._httpClient.get<OrderDetail[]>("http://localhost:8080/api/orders/cart/" + idUser)
   }
+  
+  deleteOrder(id):Observable<OrderDetail>{
+    return this._httpClient.delete<OrderDetail>("http://localhost:8080/api/orders/delete/orderDetail" + id)
+  }
+
 }

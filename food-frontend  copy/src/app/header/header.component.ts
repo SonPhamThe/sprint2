@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Food } from '../model/food/food';
+import { TokenService } from '../service/account/token.service';
 import { FoodServiceService } from '../service/food/food-service.service';
 
 @Component({
@@ -12,13 +13,17 @@ export class HeaderComponent implements OnInit {
   rfFood: FormGroup;
   food: Food[];
   name: string = "";
-
+  login: boolean;
   constructor(
     private _foodService: FoodServiceService,
+    private _token: TokenService
   ) {
   }
 
   ngOnInit(): void {
+    if(this._token.isLogged){
+      this.login = true;
+    }
   }
 
   searchAll() {

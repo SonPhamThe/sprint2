@@ -91,4 +91,10 @@ public class OrderRestController {
         orderDetailService.save(orderDetail1);
         return new ResponseEntity<>(orders, HttpStatus.OK);
     }
+
+    @DeleteMapping("delete/orderDetail/{id}")
+    public ResponseEntity<OrderDetail> deleteOrderDetail(@PathVariable Integer id){
+        orderDetailService.delete(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }
