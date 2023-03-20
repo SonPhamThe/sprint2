@@ -23,12 +23,7 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public List<Product> findProductByCode(String code) {
-        return iProductRepository.findProductByCode(code);
-    }
-
-    @Override
-    public List<Product> findProductByName(String name) {
-        return iProductRepository.findProductByName(name);
+    public void createProduct(Product product) {
+        iProductRepository.save(product);
     }
 }
